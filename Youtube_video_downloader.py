@@ -2,7 +2,7 @@ import streamlit as st
 import yt_dlp
 import os
 
-st.title("YouTube Video Downloader (No FFmpeg)")
+st.title("YouTube Video Downloader")
 
 def video_download(url, save_path):
     try:
