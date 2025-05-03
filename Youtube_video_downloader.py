@@ -7,24 +7,19 @@ def video_download(url, save_path):
         if not os.path.exists(save_path):
             os.makedirs(save_path)
 
-        try:
-            ydl_opts = {
-                'format': 'bestvideo+bestaudio/best',
-                'outtmpl': os.path.join(save_path, '%(title)s.%(ext)s'),
-                'merge_output_format': 'mp4',
-            }
-        except Exception as e:
-             ydl_opts = {
-            'format': 'best', 
+        ydl_opts = {
+            'format': 'bv*+ba/b', 
             'outtmpl': os.path.join(save_path, '%(title)s.%(ext)s'),
-            'merge_output_format': 'mp4',   
-            }
+            'merge_output_format': None,  
+            'postprocessors': [],  
+        }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
         st.success("Video downloaded successfully!")
     except Exception as e:
         st.error(f"An error occurred: {e}")
+
 
 st.title("YouTube Video Downloader")
 video_url = st.text_input("Enter the YouTube URL:")
