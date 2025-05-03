@@ -8,11 +8,11 @@ def video_download(url, save_path):
             os.makedirs(save_path)
 
         ydl_opts = {
-            'format': 'bv*+ba/b', 
+            'format': '18',  # Format 18 is usually 360p mp4 with audio+video
             'outtmpl': os.path.join(save_path, '%(title)s.%(ext)s'),
-            'merge_output_format': None,  
-            'postprocessors': [],  
+            'postprocessors': [],  # Avoid FFmpeg
         }
+
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
