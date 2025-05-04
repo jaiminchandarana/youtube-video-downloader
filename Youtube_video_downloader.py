@@ -19,7 +19,7 @@ def video_download(url, save_path):
             info = ydl.extract_info(url, download=True)
             filename = ydl.prepare_filename(info)
 
-        st.success("Video downloaded successfully!")
+        st.success("Video fetched successfully!")
 
         with open(filename, "rb") as f:
             st.download_button(
@@ -37,7 +37,7 @@ save_dir = os.getcwd()
 
 if st.button("Get Video"):
     if video_url:
-        st.info("Download started... Please wait.")
+        st.info("Fetching started... Please wait.")
         video_download(video_url, save_dir)
     else:
         st.warning("Please enter a YouTube video URL!")
